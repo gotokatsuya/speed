@@ -44,16 +44,33 @@ type loggerRO struct {
 }
 
 // NewLogger returns a new Logger
-func NewLogger(description string) *Logger {
+func NewLogger(descriptions ...string) *Logger {
 	if !enableSpeedLogger {
 		return &Logger{}
 	}
 
+	var description string
+	switch {
+	case len(descriptions) == 0:
+		description = "-"
+	default:
+		description = descriptions[0]
+	}
 	return &Logger{
 		loggerRO: loggerRO{
 			description: description,
 		},
 	}
+}
+
+// Description set description to logger
+func (l *Logger) Description(description string) *Logger {
+	if !enableSpeedLogger {
+		return l
+	}
+
+	l.description = description
+	return l
 }
 
 // Copy returns a new Logger
