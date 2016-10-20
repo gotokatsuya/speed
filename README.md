@@ -4,13 +4,13 @@
 
 ### Enable
 
-1. Add speed option
+A: Add speed option
 
 ```bash
 $ go run main.go -speed
 ```
 
-2. Call EnableLogger() in main.init()
+B: Call EnableLogger() in main.init()
 
 ```go
 package main
